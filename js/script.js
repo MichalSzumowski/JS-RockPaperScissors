@@ -1,8 +1,9 @@
-function playGame(playerInput){
+{
+const playGame = function(playerInput){
 
     clearMessages();
 
-    function getMoveName(argMoveId){
+    const getMoveName = function(argMoveId){
         if(argMoveId == 1){
         return 'kamień';
         } else if(argMoveId == 2){
@@ -17,11 +18,11 @@ function playGame(playerInput){
 
     /* Computer Move */
 
-    let randomNumber = Math.floor(Math.random() * 3 + 1);
-
+    const randomNumber = Math.floor(Math.random() * 3 + 1),
+        ComputerMove = getMoveName(randomNumber),
+        PlayerMove = getMoveName(playerInput);
+    
     console.log('Wylosowana liczba to: ' + randomNumber);
-
-    let ComputerMove = getMoveName(randomNumber);
 
     /* if(randomNumber == 1){
     computerMove = 'kamień';
@@ -38,8 +39,7 @@ function playGame(playerInput){
     /* let playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.'); */
 
     console.log('Gracz wpisał: ' + playerInput);
-
-    let PlayerMove = getMoveName(playerInput);
+    printMessage('Twój ruch to: ' + PlayerMove);
 
     /* if(playerInput == '1'){
     playerMove = 'kamień';
@@ -51,11 +51,11 @@ function playGame(playerInput){
         playerMove == 'ruch nieprawidłowy!';
     } */
 
-    printMessage('Twój ruch to: ' + PlayerMove);
+    
 
     /* Result */
 
-    function displayResult (argComputerMove, argPlayerMove){
+    const displayResult = function(argComputerMove, argPlayerMove){
         console.log('moves:', argComputerMove, argPlayerMove, ComputerMove, PlayerMove);
         
         if (argComputerMove == 'kamień' && argPlayerMove == 'papier'){
@@ -91,3 +91,5 @@ document.getElementById('play-paper').addEventListener('click', function(){
 document.getElementById('play-scissors').addEventListener('click', function(){
     playGame(3);
   });
+
+}
